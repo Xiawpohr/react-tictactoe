@@ -2,6 +2,9 @@
 
 Implementation of the Facebook React tutorial with improvements.
 
+## Demo
+[https://xiawpohr.github.io/react-tictactoe/](https://xiawpohr.github.io/react-tictactoe/)
+
 ## Improvements
 
 * Display the location for each move in the format (col, row) in the move history list.
