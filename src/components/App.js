@@ -7,7 +7,7 @@ function App (props) {
       <header>Tic Tac Toe</header>
       <Game />
       <footer>
-        <a href='#'>Github</a>
+        <a href='https://github.com/Xiawpohr/react-tictactoe'>Github</a>
       </footer>
     </div>
   )
