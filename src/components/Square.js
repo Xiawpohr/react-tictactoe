@@ -10,7 +10,7 @@ function Square (props) {
       className={className}
       onClick={props.onClick}
     >
-      {props.value}
+      <div className='square-content'>{props.value}</div>
     </button>
   )
 }

@@ -35,5 +35,4 @@ export default class MoveList extends React.Component {
       </div>
     )
   }
-
 }

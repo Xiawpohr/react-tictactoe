@@ -1,10 +1,42 @@
+html {
+  font-size: 62.5%;
+}
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  font: 1.4rem "Century Gothic", Futura, sans-serif;
 }
 
 ol, ul {
-  padding-left: 30px;
+  padding-left: 3rem;
+}
+
+header {
+  width: 100%;
+  margin: 4.8rem 0;
+  flex-basis: 6rem;
+  text-align: center;
+  font-size: 5.6rem;
+}
+
+footer {
+  width: 100%;
+  margin: 4.8rem 0;
+  flex-basis: 6rem;
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-row {
+  max-width: 480px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .board-row:after {
@@ -14,26 +46,38 @@ ol, ul {
 }
 
 .status {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  position: relative;
+  flex: 1;
+  margin-top: -0.1rem;
+  margin-right: -0.1rem;
+  border: 0.1rem solid #999;
   padding: 0;
-  text-align: center;
-  width: 34px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
 .square:focus {
   outline: none;
+}
+
+.square-content {
+  position: absolute;
+  font-size: 10vw;
+  font-weight: bold;
+  text-align: center;
+
 }
 
 .square--winner {
@@ -45,10 +89,15 @@ ol, ul {
 }
 
 .game {
+  flex: 1;
   display: flex;
   flex-direction: row;
 }
+.game-board {
+  flex: 2;
+}
 
 .game-info {
-  margin-left: 20px;
+  flex: 1;
+  margin-left: 2rem;
 }
