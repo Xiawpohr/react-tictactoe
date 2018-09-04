@@ -23,15 +23,25 @@ export default class MoveList extends React.Component {
       : 'Game Start'
       return (
         <li key={move}>
-          <button onClick={() => this.props.jumpTo(move)}>{move === stepNumber ? <b>{desc}</b> : desc}</button>
+          <button
+            className='btn btn-lg btn-link pull-xs-right'
+            onClick={() => this.props.jumpTo(move)}
+          >
+            {move === stepNumber ? <b>{desc}</b> : desc}
+          </button>
         </li>
       )
     })
     const orderedMoves = this.state.isAscending ? moves : moves.reverse()
     return (
       <div>
-        <button onClick={this.toggleOrder}>{this.state.isAscending ? 'Asce' : 'Desc'}</button>
         <ul>{orderedMoves}</ul>
+        <button
+          className='btn btn-lg btn-outline-info pull-xs-right'
+          onClick={this.toggleOrder}
+        >
+          {this.state.isAscending ? 'Asce' : 'Desc'}
+        </button>
       </div>
     )
   }
