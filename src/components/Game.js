@@ -1,6 +1,7 @@
 import React from 'react'
 import Board from './Board.js'
 import Status from './Status.js'
+import MoveController from './MoveController.js'
 import MoveList from './MoveList.js'
 import calculateWinCondition from '../utils.js'
 
@@ -17,6 +18,7 @@ export default class Game extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this)
     this.jumpTo = this.jumpTo.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   handleClick (pos) {
@@ -47,6 +49,17 @@ export default class Game extends React.Component {
     })
   }
 
+  reset () {
+    this.setState({
+      history: [{
+        movement: null,
+        squares: Array(9).fill(null)
+      }],
+      stepNumber: 0,
+      xIsNext: true
+    })
+  }
+
   render () {
     const history = this.state.history
     const current = history[this.state.stepNumber]
@@ -65,6 +78,12 @@ export default class Game extends React.Component {
             winner={win && win.winner}
             isFinished={this.state.stepNumber === 9}
             nextPlayer={this.state.xIsNext ? 'X' : 'O'}
+          />
+          <MoveController
+            historyLength={history.length}
+            stepNumber={this.state.stepNumber}
+            jumpTo={this.jumpTo}
+            reset={this.reset}
           />
           <MoveList
             history={history}
