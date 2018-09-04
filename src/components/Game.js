@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board.js'
+import MoveList from './MoveList.js'
 import calculateWinner from '../utils.js'
 
 export default class Game extends React.Component {
@@ -53,16 +54,6 @@ export default class Game extends React.Component {
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     }
-    const moves = history.map((step, move) => {
-      const desc = move
-      ? `Go to move #${move}: ${step.movement.player}(${step.movement.position[0]}, ${step.movement.position[1]})`
-      : 'Go to game start'
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{move === this.state.stepNumber ? <b>{desc}</b> : desc}</button>
-        </li>
-      )
-    })
     return (
       <div className='game'>
         <div className='game-board'>
@@ -73,7 +64,11 @@ export default class Game extends React.Component {
         </div>
         <div className='game-info'>
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <MoveList
+            history={history}
+            stepNumber={this.state.stepNumber}
+            jumpTo={this.jumpTo}
+          />
         </div>
       </div>
     )
