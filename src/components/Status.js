@@ -1,13 +1,14 @@
 import React from 'react'
+import Sign from './Sign.js'
 
 function Status (props) {
   let status
   if (props.isFinished) {
-    status = 'No one wins!'
+    status = <span>No one wins!</span>
   } else if (props.winner) {
-    status = `Winner: ${props.winner}`
+    status = <span>Winner: <Sign player={props.winner} /></span>
   } else {
-    status = `Next player: ${props.nextPlayer}`
+    status = <span>Next player: <Sign player={props.nextPlayer} /></span>
   }
   return (
     <div className='game-status'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Sign from './Sign'
 
 function Square (props) {
   let className = 'square'
@@ -10,7 +11,9 @@ function Square (props) {
       className={className}
       onClick={props.onClick}
     >
-      <div className='square-content'>{props.value}</div>
+      <div className='square-content'>
+        <Sign player={props.value} />
+      </div>
     </button>
   )
 }
