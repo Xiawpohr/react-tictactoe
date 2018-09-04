@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board.js'
+import Status from './Status.js'
 import MoveList from './MoveList.js'
 import calculateWinCondition from '../utils.js'
 
@@ -50,14 +51,6 @@ export default class Game extends React.Component {
     const history = this.state.history
     const current = history[this.state.stepNumber]
     const win = calculateWinCondition(current.squares)
-    let status
-    if (win) {
-      status = 'Winner: ' + win.winner
-    } else if (this.state.stepNumber !== 9) {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
-    } else {
-      status = 'No one wins'
-    }
     return (
       <div className='game'>
         <div className='game-board'>
@@ -68,7 +61,11 @@ export default class Game extends React.Component {
           />
         </div>
         <div className='game-info'>
-          <div>{status}</div>
+          <Status
+            winner={win && win.winner}
+            isFinished={this.state.stepNumber === 9}
+            nextPlayer={this.state.xIsNext ? 'X' : 'O'}
+          />
           <MoveList
             history={history}
             stepNumber={this.state.stepNumber}

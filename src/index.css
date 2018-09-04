@@ -101,3 +101,7 @@ footer {
   flex: 1;
   margin-left: 2rem;
 }
+
+.game-status {
+  font-size: 2.4rem;
+}
