@@ -1,7 +1,7 @@
 import React from 'react'
 import Board from './Board.js'
 import MoveList from './MoveList.js'
-import calculateWinner from '../utils.js'
+import calculateWinCondition from '../utils.js'
 
 export default class Game extends React.Component {
   constructor (props) {
@@ -20,7 +20,7 @@ export default class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1)
     const current = history[history.length - 1]
     const squares = current.squares.slice()
-    if (calculateWinner(squares) || squares[pos]) return
+    if (calculateWinCondition(squares) || squares[pos]) return
     squares[pos] = this.state.xIsNext ? 'X' : 'O'
     const col = Math.floor(pos % 3) + 1
     const row = Math.floor(pos / 3) + 1
@@ -47,10 +47,10 @@ export default class Game extends React.Component {
   render () {
     const history = this.state.history
     const current = history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares)
+    const win = calculateWinCondition(current.squares)
     let status
-    if (winner) {
-      status = 'Winner: ' + winner
+    if (win) {
+      status = 'Winner: ' + win.winner
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     }
@@ -59,6 +59,7 @@ export default class Game extends React.Component {
         <div className='game-board'>
           <Board
             squares={current.squares}
+            winnerSquares={win && win.winnerSquares}
             onClick={pos => this.handleClick(pos)}
           />
         </div>
