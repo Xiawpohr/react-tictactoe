@@ -14,6 +14,8 @@ export default class Game extends React.Component {
       stepNumber: 0,
       xIsNext: true
     }
+    this.handleClick = this.handleClick.bind(this)
+    this.jumpTo = this.jumpTo.bind(this)
   }
 
   handleClick (pos) {
@@ -60,7 +62,7 @@ export default class Game extends React.Component {
           <Board
             squares={current.squares}
             winnerSquares={win && win.winnerSquares}
-            onClick={pos => this.handleClick(pos)}
+            onClick={this.handleClick}
           />
         </div>
         <div className='game-info'>
